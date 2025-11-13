@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Select,
   SelectContent,
@@ -19,13 +19,13 @@ import {
 } from "lucide-react";
 
 
-const Aside = () => {
+const Aside = ({collapseMenu}) => {
     
 
     
 
   return (
-    <aside className="w-80 flex flex-col ">
+    <aside className={collapseMenu ? 'hidden' : "w-80 flex flex-col "}>
       <div className="flex gap-2 cursor-pointer mb-9 border-b-2
        border-b-black pb-2 w-80" >
         <HomeIcon /> <p>Home</p>
@@ -61,10 +61,10 @@ const Aside = () => {
           <SelectContent>
             <SelectGroup>
               <SelectLabel></SelectLabel>
-              <SelectItem value="apple">Account</SelectItem>
-              <SelectItem value="banana">Admin</SelectItem>
-              <SelectItem value="blueberry">Review</SelectItem>
-              <SelectItem value="grapes">System</SelectItem>
+              <SelectItem value="account">Account</SelectItem>
+              <SelectItem value="admin">Admin</SelectItem>
+              <SelectItem value="review">Review</SelectItem>
+              <SelectItem value="system">System</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
