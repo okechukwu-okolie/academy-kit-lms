@@ -12,11 +12,14 @@ const MainRegister = () => {
           collapseMenu,
           handleCollapseMenu,
           handleSubmitRegister,
-          Error
+          Error,
+          switchControl,
+           setSwitchControl
         }
          = useContext(AuthContext)
 
-         console.log(registerInfo)
+        //  console.log(registerInfo)
+  
   return (
     <main className="flex min-h-screen justify-center items-center">
       <form onSubmit={handleSubmitRegister}>
@@ -61,14 +64,9 @@ const MainRegister = () => {
             {collapseMenu ? <EyeClosed onClick={handleCollapseMenu}/> :<EyeIcon onClick={handleCollapseMenu}/>}
           </div>
 
-
-          <Button className="bg-teal-300 rounded-3xl w-80" type='submit'>
-            Create an account
-          </Button>
-
-
           <div className="flex gap-2 mt-3">
             <Switch 
+            onCheckedChange={()=>setSwitchControl(!switchControl)}
             />
             <p className="text-[12px]">
               Do you agree withh all the{" "}
@@ -77,6 +75,12 @@ const MainRegister = () => {
               </a>
             </p>
           </div>
+
+          <Button className="bg-teal-300 rounded-3xl w-80 mt-7" type='submit'>
+            Create an account
+          </Button>
+
+
 
           <div className="flex justify-center gap-2 mt-12 w-80">
             <p className="text-[13px]">

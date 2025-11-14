@@ -7,3 +7,8 @@ export const mainRegister = {
     password: "",
     TandC:false
 }
+
+export const authenticateState = {
+    authenticate:false,
+    user:null
+}
