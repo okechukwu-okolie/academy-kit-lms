@@ -12,3 +12,9 @@ export const authenticateState = {
     authenticate:false,
     user:null
 }
+
+export const mainLogin = {
+    email: "",
+    password: "",
+
+}

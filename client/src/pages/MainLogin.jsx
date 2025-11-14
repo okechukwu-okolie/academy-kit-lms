@@ -1,16 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/Input";
 import {  EyeIcon } from "lucide-react";
-import React from "react";
+import React, { useContext } from "react";
 import google from '/google-icon.png'
 import microsoft from '/microsoft-icon.png'
 import mainLoginImage from '/mainLoginImage.png'
+import { AuthContext } from "@/context/authContext";
 
 
 const MainLogin = () => {
+  const {handleSubmitLogin} = useContext(AuthContext)
   return (
     <main className="flex min-h-screen justify-center items-center">
-      <section className="flex flex-col">
+      <form onSubmit={handleSubmitLogin} className="flex flex-col">
         <section className="flex flex-col justify-center items-center tracking-tight text-sm/normal">
           <h1 className="text-3xl font-extrabold ">
             academy<span className="text-teal-300">kit</span>
@@ -44,7 +46,7 @@ const MainLogin = () => {
            </div>
            
         </div>
-      </section>
+      </form>
       <section className="hidden lg:block">
         <img src={mainLoginImage} alt="" />
       </section>
