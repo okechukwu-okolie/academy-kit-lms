@@ -29,21 +29,31 @@ export default function AuthProvider({ children }) {
       setError(true);
       return;
     }
+    //resets the error state
     setError(null)
 
+      //changes the stte of thTandC to true
     const updatedRegisteredInfo = {...registerInfo, TandC:true}
-   const singleRegistereduser ={
+
+
+    //creates a new object for the new user information. this variable iw what is sent to a database
+    const singleRegistereduser ={
     id: Math.random(),
     updatedRegisteredInfo,
    }
 
+
+   //this section is optional and provides for a local store
    //this allows the update to occur before console logging
  const updatedFilledForm = [...fillForm, singleRegistereduser]
 
 
+   //the set state is updated at this stage
    setFillForm(updatedFilledForm)
-   console.log('this is the updated form: ',updatedFilledForm)
+  //  console.log('this is the updated form: ',updatedFilledForm)
 
+
+  //the input states are returned to their original empty states
    setRegisterInfo({
     registeredFirstName:'',
     registeredLastName:'',
@@ -51,7 +61,7 @@ export default function AuthProvider({ children }) {
     password:'',
     TandC:false
    })
-   console.log('this is the reset form: ',registerInfo)
+  //  console.log('this is the reset form: ',registerInfo)
   };
 
 
