@@ -118,15 +118,7 @@ async function deleteUser(userId) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 */
+
+
+import api from "./axiosInstances";
