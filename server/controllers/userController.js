@@ -24,6 +24,24 @@ const registeringUser = async(req,res)=>{
     //hashing the password for security purpose
     const hashedPassword = await bcrypt.hash(password,5)
 
+    //creating a new instance of the registered user
+    const newUser = new User({
+        registeredFirstName,
+        registeredLastName,
+        email,
+        hashedPassword,
+        TandC,
+        role
+    })
+
+    //saving the new instance of the user
+    await newUser.save()
+
+    return res.status(201).json({
+        success:true,
+        message:' User registered successfully!!'
+    })
+
 }
 
 
