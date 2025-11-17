@@ -1,3 +1,4 @@
+import { registeredUser } from "@/axios-setup/httpMethods";
 import { mainLogin, mainRegister } from "@/config/config";
 import { useState, createContext } from "react";
 
@@ -18,7 +19,7 @@ export default function AuthProvider({ children }) {
   };
 
 //handles the submission of registered user of the LMS
-  const handleSubmitRegister = (e) => {
+  const handleSubmitRegister = async(e) => {
     e.preventDefault();
     if (
       registerInfo.registeredFirstName.trim() === "" ||
@@ -34,6 +35,8 @@ export default function AuthProvider({ children }) {
 
       //changes the stte of thTandC to true
     const updatedRegisteredInfo = {...registerInfo, TandC:true}
+    console.log(updatedRegisteredInfo)
+
 
 
     //creates a new object for the new user information. this variable iw what is sent to a database
@@ -45,13 +48,17 @@ export default function AuthProvider({ children }) {
 
    //this section is optional and provides for a local store
    //this allows the update to occur before console logging
- const updatedFilledForm = [...fillForm, singleRegistereduser]
+ const updatedFilledForm = {...registerInfo, singleRegistereduser}
 
 
    //the set state is updated at this stage
    setFillForm(updatedFilledForm)
   //  console.log('this is the updated form: ',updatedFilledForm)
 
+
+  //applying the axios function to connect the frontend to the bcakend using the API.
+  const userRegisterData = await registeredUser(registerInfo)
+  console.log(userRegisterData)
 
   //the input states are returned to their original empty states
    setRegisterInfo({

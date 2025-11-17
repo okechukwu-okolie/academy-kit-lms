@@ -19,6 +19,10 @@ const MainRegister = () => {
          = useContext(AuthContext)
 
         //  console.log(registerInfo)
+
+        const handleSwitch = ()=>{
+          setSwitchControl(!switchControl)
+        }
   
   return (
     <main className="flex min-h-screen justify-center items-center">
@@ -66,7 +70,8 @@ const MainRegister = () => {
 
           <div className="flex gap-2 mt-3">
             <Switch 
-            onCheckedChange={()=>setSwitchControl(!switchControl)}
+            onCheckedChange={handleSwitch}
+            checked = {switchControl ? true:false}
             />
             <p className="text-[12px]">
               Do you agree withh all the{" "}

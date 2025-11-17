@@ -4,9 +4,12 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 
+const userRoute = require('../server/routes/userRoutes')
+
+
 const app = express()
 
-const PORT = 6000
+const PORT = 5000
 
 app.use(express.json())
 
@@ -29,6 +32,8 @@ database(process.env.MONGO_KEY)
 // .then(()=>console.log('Database is connected successfully')
 // ).catch(()=>console.log('unable to connect to the database'))
 
+// route configuration
+app.use('/auth',userRoute)
 
 
 

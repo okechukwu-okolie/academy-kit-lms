@@ -122,3 +122,8 @@ async function deleteUser(userId) {
 
 
 import api from "./axiosInstances";
+
+export const registeredUser = async(registeredUserData)=>{
+  const {data} = await api.post('/auth/register',{...registeredUserData, role:'user'})
+  return data
+}
