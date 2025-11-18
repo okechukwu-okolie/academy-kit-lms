@@ -5,6 +5,7 @@ import {  EyeClosed, EyeIcon } from "lucide-react";
 import React, { useContext } from "react";
 import mainRegisterImage from "/mainRegisterImage.png";
 import { AuthContext } from "@/context/authContext";
+import { Link } from "react-router-dom";
 
 const MainRegister = () => {
   const { registerInfo, 
@@ -90,9 +91,9 @@ const MainRegister = () => {
           <div className="flex justify-center gap-2 mt-12 w-80">
             <p className="text-[13px]">
               Already have an account?{" "}
-              <a href="http://www.youtube.com" className="underline">
+              <Link to='/main-login' className="underline">
                 log in
-              </a>
+              </Link>
             </p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/Input";
-import { EyeIcon } from "lucide-react";
+import { EyeClosed, EyeIcon } from "lucide-react";
 import React, { useContext } from "react";
 import google from "/google-icon.png";
 import microsoft from "/microsoft-icon.png";
@@ -9,8 +9,14 @@ import { AuthContext } from "@/context/authContext";
 import { Link } from "react-router-dom";
 
 const MainLogin = () => {
-  const { handleSubmitLogin, loginInfo, setLoginInfo,Error} =
-    useContext(AuthContext);
+  const { handleSubmitLogin,
+           loginInfo,
+            setLoginInfo,
+            Error,
+          collapseMenu,
+          handleCollapseMenu
+        }
+             = useContext(AuthContext);
   return (
     <main className="flex min-h-screen justify-center items-center">
       <form onSubmit={handleSubmitLogin} className="flex flex-col">
@@ -31,13 +37,13 @@ const MainLogin = () => {
 
           <div className="flex items-center">
             <Input
-              type="password"
+              type={collapseMenu ? "text" : "password"}
               placeholder="Input password here......"
               className="mb-3"
                value={loginInfo.password}
                onChange={(e)=>setLoginInfo({...loginInfo, password:e.target.value})}
             />
-            <EyeIcon />
+            {collapseMenu ? <EyeClosed onClick={handleCollapseMenu}/> :<EyeIcon onClick={handleCollapseMenu}/>}
           </div>
 
           <Button className="bg-teal-300 rounded-3xl w-80">Login</Button>
@@ -70,10 +76,10 @@ const MainLogin = () => {
           <div className="flex justify-center gap-2 mt-12 w-80">
             <p className="text-[13px]">
               Do not have an account?{" "}
-              <a href="http://www.youtube.com" className="underline">
+              <Link  to='/main-register' className="underline">
                 Sign up
-              </a>
-              <Link to='/main-register'>sign up</Link>
+              </Link>
+              
             </p>
           </div>
         </div>

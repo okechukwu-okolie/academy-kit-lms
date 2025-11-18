@@ -71,12 +71,12 @@ export default function AuthProvider({ children }) {
 
       // this state updates the original state of the loginInfo 
    setLoginInfo({...loginInfo, email:loginInfo.email, password: loginInfo.password})
-   console.log(loginInfo)
+  //  console.log(loginInfo)
 
 
   //this line of code is the axios link to the database
     const data = await loginOfUser(loginInfo)
-    console.log(data)
+    // console.log(data)
 
 
     if (data.success) {
@@ -86,18 +86,22 @@ export default function AuthProvider({ children }) {
         user: data.data.user,       
       });
     } else {
+      console.log('hello')
       setError(true)
+      
       setAuth({
         authenticate: false,
         user: null,
-      });
+      })
     
   }
+ 
 
   setLoginInfo({
     password:'',
     email:''
   })
+
   navigation('/')
   }
 
@@ -134,19 +138,19 @@ export default function AuthProvider({ children }) {
 
 
 
-  //   function resetCredentials(){
-  //    setAuth({
-  //     authenticate:false,
-  //     user:null,
-  //    })
-  // }
+    function resetCredentials(){
+     setAuth({
+      authenticate:false,
+      user:null,
+     })
+  }
 
 
 
-    //call check auth user on app load
-  // useEffect(() => {
-  //   checkAuthUser();
-  // }, []);
+    // call check auth user on app load
+  useEffect(() => {
+    checkAuthUser();
+  }, []);
 
 
 
