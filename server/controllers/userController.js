@@ -29,8 +29,8 @@ const registeringUser = async(req,res)=>{
         registeredFirstName,
         registeredLastName,
         email,
-        hashedPassword,
-        TandC,
+        password:hashedPassword,
+        TandC:true,
         role
     })
 
@@ -44,8 +44,6 @@ const registeringUser = async(req,res)=>{
 
 }
 
-
-
 //function to handle the login-in of users
 const loginUser = async(req,res)=>{
     //destructuring the body for the required schema properties
@@ -55,11 +53,19 @@ const loginUser = async(req,res)=>{
     const checkUser = await User.findOne({email})
 
     //check for the email and if the hashed password compares to the actual password
-    if(!checkUser || !(await bcrypt.compare(password,checkUser.password )))
+    if(!checkUser ){
         return res.status(401).json({
             success: false,
             message:'This email and password does not exist'
-        })
+        })}
+
+        const isMatch = await bcrypt.compare(password,checkUser.password)
+
+         if(!isMatch ){
+        return res.status(401).json({
+            success: false,
+            message:'This email and password does not exist'
+        })}
 
     //here a token is generated to defin this user in this session of their login
     const accessToken = jwt.sign(

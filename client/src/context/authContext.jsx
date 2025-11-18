@@ -1,6 +1,7 @@
 import { checkAuthService, loginOfUser, registeredUser } from "@/axios-setup/httpMethods";
 import { authState, mainLogin, mainRegister } from "@/config/config";
 import { useState, createContext, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext(null);
 export default function AuthProvider({ children }) {
@@ -12,8 +13,9 @@ export default function AuthProvider({ children }) {
   const [fillForm, setFillForm] = useState([]);
   const [Error, setError] = useState(false);
   const [switchControl, setSwitchControl] = useState(false);
-  // const [auth, setAuth] = useState(authState);
-  //  const [loading, setLoading] = useState(true);
+  const [auth, setAuth] = useState(authState);
+   const [loading, setLoading] = useState(true);
+   const navigation = useNavigate()
 
   //handles the mobile options tab
   const handleCollapseMenu = () => {
@@ -33,28 +35,13 @@ export default function AuthProvider({ children }) {
       return;
     }
     //resets the error state
-    setError(null)
+    setError(false)
 
-      //changes the state of thTandC to true
-    const updatedRegisteredInfo = {...registerInfo, TandC:true}
-    console.log(updatedRegisteredInfo)
-
-
-
-    //creates a new object for the new user information. this variable iw what is sent to a database
-    const singleRegistereduser ={
-    id: Math.random(),
-    updatedRegisteredInfo,
-   }
-
-
-   //this section is optional and provides for a local store
-   //this allows the update to occur before console logging
- const updatedFilledForm = {...registerInfo, singleRegistereduser}
+    console.log(registerInfo)
 
 
    //the set state is updated at this stage
-   setFillForm(updatedFilledForm)
+   setFillForm(registerInfo)
   //  console.log('this is the updated form: ',updatedFilledForm)
 
 
@@ -70,7 +57,7 @@ export default function AuthProvider({ children }) {
     password:'',
     TandC:false
    })
-  //  console.log('this is the reset form: ',registerInfo)
+   navigation('/main-login')
   };
 
 
@@ -91,7 +78,76 @@ export default function AuthProvider({ children }) {
     const data = await loginOfUser(loginInfo)
     console.log(data)
 
+
+    if (data.success) {
+      sessionStorage.setItem("accessToken",JSON.stringify(data.data.accessToken));
+      setAuth({
+        authenticate: true,
+        user: data.data.user,       
+      });
+    } else {
+      setError(true)
+      setAuth({
+        authenticate: false,
+        user: null,
+      });
+    
   }
+
+  setLoginInfo({
+    password:'',
+    email:''
+  })
+  navigation('/')
+  }
+
+
+
+    //check auth user on app load
+ async function checkAuthUser() {
+    try {
+      const data = await checkAuthService();
+      if (data.success) {
+        setAuth({
+          authenticate: true,
+          user: data.data.user,
+        });
+        setLoading(false);
+      } else {
+        setAuth({
+          authenticate: false,
+          user: null,
+        });
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      if (!error?.response?.data?.success) {
+        setAuth({
+          authenticate: false,
+          user: null,
+        });
+        setLoading(false);
+      }
+    }
+  }
+
+
+
+  //   function resetCredentials(){
+  //    setAuth({
+  //     authenticate:false,
+  //     user:null,
+  //    })
+  // }
+
+
+
+    //call check auth user on app load
+  // useEffect(() => {
+  //   checkAuthUser();
+  // }, []);
+
 
 
   return (
