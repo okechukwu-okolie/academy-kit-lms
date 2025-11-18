@@ -33,7 +33,18 @@ database(process.env.MONGO_KEY)
 // ).catch(()=>console.log('unable to connect to the database'))
 
 // route configuration
-app.use('/auth',userRoute)
+
+
+app.use('/auth',userRoute)//route for user registration and login
+
+app.use((err,req,res,next)=>{
+    console.log(err.stack);
+    res.status(500).json({
+        success:false,
+        message:'Something went wrong'
+    })
+})
+
 
 
 

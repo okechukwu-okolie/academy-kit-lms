@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/Input";
 import { Switch } from "@/components/ui/switch";
-import { Eye, EyeClosed, EyeIcon } from "lucide-react";
+import {  EyeClosed, EyeIcon } from "lucide-react";
 import React, { useContext } from "react";
 import mainRegisterImage from "/mainRegisterImage.png";
 import { AuthContext } from "@/context/authContext";

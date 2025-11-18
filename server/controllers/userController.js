@@ -46,14 +46,56 @@ const registeringUser = async(req,res)=>{
 
 
 
+//function to handle the login-in of users
+const loginUser = async(req,res)=>{
+    //destructuring the body for the required schema properties
+    const {email, password} = req.body
+
+    //check for the user email in the database
+    const checkUser = await User.findOne({email})
+
+    //check for the email and if the hashed password compares to the actual password
+    if(!checkUser || !(await bcrypt.compare(password,checkUser.password )))
+        return res.status(401).json({
+            success: false,
+            message:'This email and password does not exist'
+        })
+
+    //here a token is generated to defin this user in this session of their login
+    const accessToken = jwt.sign(
+        //this is the user defined payload
+        {
+        _id: checkUser.id,
+        registeredFirstName: checkUser.registeredFirstName,
+        registeredLastName: checkUser.registeredLastName,
+        email:checkUser.email,
+        role:checkUser.role
+    },
+    //this is a secret key 
+    'JWT_SECRET',
+    //this is a duration for the token key to last for
+    {expiresIn:'1d'}
+)
+
+res.status(200).json({
+    success:true,
+    message:'User login successful',
+
+    data:{
+        accessToken,
+        user:{
+         _id: checkUser.id,
+        registeredFirstName: checkUser.registeredFirstName,
+        registeredLastName: checkUser.registeredLastName,
+        email:checkUser.email,
+        role:checkUser.role
+        }
+    }
+})
+}
 
 
 
 
 
-
-
-
-
-
-module.exports = {registeringUser}
+module.exports = {registeringUser, loginUser}

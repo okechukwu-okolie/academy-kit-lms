@@ -1,6 +1,6 @@
-import { registeredUser } from "@/axios-setup/httpMethods";
-import { mainLogin, mainRegister } from "@/config/config";
-import { useState, createContext } from "react";
+import { checkAuthService, loginOfUser, registeredUser } from "@/axios-setup/httpMethods";
+import { authState, mainLogin, mainRegister } from "@/config/config";
+import { useState, createContext, useEffect } from "react";
 
 export const AuthContext = createContext(null);
 export default function AuthProvider({ children }) {
@@ -12,6 +12,8 @@ export default function AuthProvider({ children }) {
   const [fillForm, setFillForm] = useState([]);
   const [Error, setError] = useState(false);
   const [switchControl, setSwitchControl] = useState(false);
+  // const [auth, setAuth] = useState(authState);
+  //  const [loading, setLoading] = useState(true);
 
   //handles the mobile options tab
   const handleCollapseMenu = () => {
@@ -33,7 +35,7 @@ export default function AuthProvider({ children }) {
     //resets the error state
     setError(null)
 
-      //changes the stte of thTandC to true
+      //changes the state of thTandC to true
     const updatedRegisteredInfo = {...registerInfo, TandC:true}
     console.log(updatedRegisteredInfo)
 
@@ -72,10 +74,24 @@ export default function AuthProvider({ children }) {
   };
 
 
-  const handleSubmitLogin = (e)=>{
+  const handleSubmitLogin = async(e)=>{
     e.preventDefault()
-  }
+    if(loginInfo.email.trim() === '' || loginInfo.password.trim() === ''){
+     return setError(true)
+    }
+    //this statement resets the error state if it occured earlier
+    setError(null)
 
+      // this state updates the original state of the loginInfo 
+   setLoginInfo({...loginInfo, email:loginInfo.email, password: loginInfo.password})
+   console.log(loginInfo)
+
+
+  //this line of code is the axios link to the database
+    const data = await loginOfUser(loginInfo)
+    console.log(data)
+
+  }
 
 
   return (
@@ -93,7 +109,7 @@ export default function AuthProvider({ children }) {
         setSwitchControl,
         handleSubmitLogin,
         loginInfo,
-         setLoginInfo
+        setLoginInfo
       }}
     >
       {children}

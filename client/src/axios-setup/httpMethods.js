@@ -127,3 +127,13 @@ export const registeredUser = async(registeredUserData)=>{
   const {data} = await api.post('/auth/register',{...registeredUserData, role:'user'})
   return data
 }
+
+export const loginOfUser = async(loginUserData)=>{
+  const {data} = await api.post('/auth/login',loginUserData)
+  return data;
+}
+
+export async function checkAuthService(){
+    const {data} = await api.get('/auth/check-auth')
+    return data;
+}

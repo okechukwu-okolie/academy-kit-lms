@@ -18,3 +18,8 @@ export const mainLogin = {
     password: "",
 
 }
+//this exportable object, defines the authentication state
+export const authState =  {
+    authenticate: false,
+    user: null,
+  }
