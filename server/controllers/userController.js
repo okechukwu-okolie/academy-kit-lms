@@ -98,10 +98,55 @@ res.status(200).json({
         }
     }
 })
+
+}
+
+const anotherLogin =async(req,res)=>{
+    const {email,password}= req.body
+
+    const checkUser = await User.findOne({email})
+
+    if(!checkUser){
+        return res.status(400).json({
+            success: false,
+            message:'this email does nnot exist'
+        })
+    }
+    const checkPassword = await bcrypt.compare(password, checkUser.password)
+    if(!checkPassword){
+        return res.status(400).json({
+            success:false,
+            message:'this password does not exist.'
+        })
+    }
+
+    //here we are creating the access token
+    const accessToken = jwt.sign({
+        _id:checkUser.id,
+        registeredFirstName:checkUser.registeredFirstName,
+        registeredLastName:checkUser.registeredLastName,
+        email:checkUser.email,
+        role:checkUser.role
+    },'SECRET_KEY',{expiresIn:'1d'})
+
+    return res.status(200).json({
+        success:true,
+        message:'user sucessfully logged in',
+        data:{
+            accessToken,
+            user:{
+                _id:checkUser.id,
+        registeredFirstName:checkUser.registeredFirstName,
+        registeredLastName:checkUser.registeredLastName,
+        email:checkUser.email,
+        role:checkUser.role
+            }
+        }
+    })
 }
 
 
 
 
 
-module.exports = {registeringUser, loginUser}
+module.exports = {registeringUser, loginUser, anotherLogin}

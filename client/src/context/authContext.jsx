@@ -3,6 +3,10 @@ import { authState, mainLogin, mainRegister } from "@/config/config";
 import { useState, createContext, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
+
+
+
+
 export const AuthContext = createContext(null);
 export default function AuthProvider({ children }) {
 
@@ -176,3 +180,6 @@ export default function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+
+
