@@ -11,7 +11,7 @@ export const AuthContext = createContext(null);
 export default function AuthProvider({ children }) {
 
 
-  const [collapseMenu, setCollapseMenu] = useState(false);
+  const [collapseMenu, setCollapseMenu] = useState(true);
   const [registerInfo, setRegisterInfo] = useState(mainRegister);
   const [loginInfo, setLoginInfo] = useState(mainLogin)
   const [fillForm, setFillForm] = useState([]);

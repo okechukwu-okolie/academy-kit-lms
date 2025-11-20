@@ -17,6 +17,7 @@ import {
   Settings,
   User,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 
 const Aside = ({collapseMenu}) => {
@@ -25,7 +26,7 @@ const Aside = ({collapseMenu}) => {
     
 
   return (
-    <aside className={collapseMenu ? 'hidden' : "w-80 flex flex-col "}>
+    <aside className={collapseMenu ? 'hidden' : "w-80 flex flex-col z-5"}>
       <div className="flex gap-2 cursor-pointer mb-9 border-b-2
        border-b-black pb-2 w-80" >
         <HomeIcon /> <p>Home</p>
@@ -39,10 +40,12 @@ const Aside = ({collapseMenu}) => {
        border-b-black pb-2 w-80">
         <GroupIcon /> <p>Groups</p>
       </div>
+      <Link to='/general-dashboard/user-trainings' className={collapseMenu ? 'hidden' : "w-80 flex flex-col "}>
       <div className="flex gap-2 cursor-pointer mb-9 border-b-2
        border-b-black pb-2 w-80">
         <ClipboardListIcon /> <p>Trainings</p>
       </div>
+      </Link>
       <div className="flex gap-2 cursor-pointer mb-9 border-b-2
        border-b-black pb-2 w-80">
         <LucideCalculator /> <p>Assessment</p>
