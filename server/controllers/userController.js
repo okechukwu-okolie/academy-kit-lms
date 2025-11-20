@@ -112,7 +112,7 @@ const anotherLogin =async(req,res)=>{
             message:'this email does nnot exist'
         })
     }
-    const checkPassword = await bcrypt.compare(password, checkUser.password)
+    const checkPassword =  bcrypt.compare(password, checkUser.password)
     if(!checkPassword){
         return res.status(400).json({
             success:false,

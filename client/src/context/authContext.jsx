@@ -106,7 +106,7 @@ export default function AuthProvider({ children }) {
     email:''
   })
 
-  navigation('/')
+  navigation('/general-dashboard')
   }
 
 
