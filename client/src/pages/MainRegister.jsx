@@ -71,7 +71,7 @@ const MainRegister = () => {
 
           <div className="flex gap-2 mt-3">
             <Switch 
-            onCheckedChange={handleSwitch}
+            onCheckedChange={(value)=>handleSwitch(value)}
             checked = {switchControl ? true:false}
             />
             <p className="text-[12px]">

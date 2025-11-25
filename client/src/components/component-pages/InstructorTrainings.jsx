@@ -3,7 +3,7 @@ import React from 'react'
 const InstructorTrainings = () => {
   return (
     <div>
-      this is the instructors page
+      <h1>My Trainings</h1>
     </div>
   )
 }

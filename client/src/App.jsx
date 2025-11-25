@@ -4,9 +4,9 @@ import MainLogin from './pages/MainLogin'
 import ForgotPassword from './pages/ForgotPassword'
 import GeneralDashboard from './pages/GeneralDashboard'
 import { Route, Routes } from 'react-router-dom'
-import PageNotFound from './components/page-components/PageNotFound'
-import Overview from './components/page-components/Overview'
-import UserTrainings from './components/page-components/UserTrainings'
+import PageNotFound from './components/component-pages/PageNotFound'
+import Overview from './components/component-pages/InstructorOverview'
+import UserTrainings from './components/component-pages/UserTrainings'
 
 const App = () => {
   

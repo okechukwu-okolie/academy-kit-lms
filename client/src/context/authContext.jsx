@@ -11,7 +11,7 @@ export const AuthContext = createContext(null);
 export default function AuthProvider({ children }) {
 
 
-  const [collapseMenu, setCollapseMenu] = useState(true);
+  const [collapseMenu, setCollapseMenu] = useState(false);
   const [registerInfo, setRegisterInfo] = useState(mainRegister);
   const [loginInfo, setLoginInfo] = useState(mainLogin)
   const [fillForm, setFillForm] = useState([]);
@@ -23,7 +23,7 @@ export default function AuthProvider({ children }) {
 
   //handles the mobile options tab
   const handleCollapseMenu = () => {
-    setCollapseMenu(!collapseMenu);
+    setCollapseMenu((col)=>!col);
   };
 
 //handles the submission of registered user of the LMS

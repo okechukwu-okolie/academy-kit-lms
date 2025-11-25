@@ -28,11 +28,6 @@ try {
 }
 database(process.env.MONGO_KEY)
 
-// mongoose.connect(process.env.MONGO_KEY)
-// .then(()=>console.log('Database is connected successfully')
-// ).catch(()=>console.log('unable to connect to the database'))
-
-// route configuration
 
 
 app.use('/auth',userRoute)//route for user registration and login

@@ -1,5 +1,5 @@
-import Header from "@/components/page-components/Header";
-import Aside from "@/components/page-components/Aside";
+import Header from "@/components/component-pages/Header";
+import Aside from "@/components/Aside";
 import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { AuthContext } from "@/context/authContext";
