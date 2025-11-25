@@ -26,6 +26,26 @@ const Aside = ({collapseMenu}) => {
 
   return (
     <aside className={collapseMenu ? 'hidden' : "w-screen flex flex-col z-5 fixed bg-white"}>
+
+      <div className="flex  gap-2 cursor-pointer mb-9 border-b-2
+       border-b-black pb-2 w-80">
+        <p className="">Choose your account type here:</p>
+        <Settings />
+        <Select className="outline-0">
+          <SelectTrigger className="w-[100px]">
+            <SelectValue placeholder="Settings" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel></SelectLabel>
+              <SelectItem value="account">Account</SelectItem>
+              <SelectItem value="admin">Admin</SelectItem>
+              <SelectItem value="review">Review</SelectItem>
+              <SelectItem value="system">System</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
       <div className="flex gap-2 cursor-pointer mb-9 border-b-2
        border-b-black pb-2 w-80 " >
         <HomeIcon /> <p>Home</p>
@@ -53,24 +73,7 @@ const Aside = ({collapseMenu}) => {
        border-b-black pb-2 w-80">
         <LucideMailQuestion /> <p>Question pool</p>
       </div>
-      <div className="flex  gap-2 cursor-pointer mb-9 border-b-2
-       border-b-black pb-2 w-80">
-        <Settings />
-        <Select className="outline-0">
-          <SelectTrigger className="w-[100px]">
-            <SelectValue placeholder="Settings" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel></SelectLabel>
-              <SelectItem value="account">Account</SelectItem>
-              <SelectItem value="admin">Admin</SelectItem>
-              <SelectItem value="review">Review</SelectItem>
-              <SelectItem value="system">System</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
+      
       <div className="flex gap-2 cursor-pointer mb-9 border-b-2
        border-b-black pb-2 w-80">
         <LucideHelpCircle /> <p>Help</p>

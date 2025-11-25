@@ -7,8 +7,8 @@ import {
   Users2,
   UserSquare,
 } from "lucide-react";
-import InstructorTrainings from "./InstructorTrainings";
-import UpcomingEvents from "./upcomingEvents";
+import InstructorTrainings from "../components-for-page/InstructorTrainings";
+import UpcomingEvents from "../components-for-page/UpcomingEvents";
 import { Button } from "../ui/button";
 
 const overviewDetails = [
@@ -59,7 +59,7 @@ const InstructorOverview = () => {
   return (
     <div className="flex flex-col h-min-screen ">
       <Button
-        onClick={() => handleInstructorView(num + 1)}
+        onClick={() => handleInstructorView(num+1)}
         className={
           instructorOverview === 1
             ? "bg-black text-white"
@@ -90,7 +90,7 @@ const InstructorOverview = () => {
             <h1 className='text-[13px] font-extrabold'>These are the number of trainings you are moderating</h1>
             <Button className='text-[10px] font-semibold bg-red-500' onClick={()=>setSeeMore(!seeMore)}>{seeMore ? "see less" : "see more"}</Button>
            </div>
-        <div className={ seeMore ? "flex flex-wrap gap-2 justify-evenly px-3 my-4 h-[400px] overflow-y-scroll" : "flex flex-wrap gap-2 justify-evenly px-3 my-4 h-[400px] overflow-hidden"}>
+        <div className={ seeMore ? "flex flex-wrap gap-2 justify-evenly px-3 my-4 h-[300px] overflow-y-scroll" : "flex flex-wrap gap-2 justify-evenly px-3 my-4 h-[300px] overflow-hidden"}>
           
           <InstructorTrainings />
         </div>
@@ -107,7 +107,10 @@ const InstructorOverview = () => {
         >
           Upcoming Events
         </Button>
-        <div className={instructorOverview !== 3 ? "hidden":"flex flex-wrap gap-6 justify-between px-3 my-4"}>
+        <div className={instructorOverview !== 3 ? "hidden":"flex flex-wrap gap-2 justify-between px-3 my-4"}>
+          <UpcomingEvents />
+          <UpcomingEvents />
+          <UpcomingEvents />
           <UpcomingEvents />
 
         </div>
