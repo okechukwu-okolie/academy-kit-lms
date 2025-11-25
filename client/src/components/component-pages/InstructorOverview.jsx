@@ -59,7 +59,7 @@ const InstructorOverview = () => {
   return (
     <div className="flex flex-col h-min-screen ">
       <Button
-        onClick={() => handleInstructorView(num+1)}
+        onMouseEnter={() => handleInstructorView(num+1)}
         className={
           instructorOverview === 1
             ? "bg-black text-white"
@@ -76,7 +76,7 @@ const InstructorOverview = () => {
       </div>
       
         <Button
-          onClick={() => handleInstructorView(num + 2)}
+          onMouseEnter={() => handleInstructorView(num + 2)}
           className={
             instructorOverview === 2
               ? "bg-red-500 text-white"
@@ -98,7 +98,7 @@ const InstructorOverview = () => {
       
       
         <Button
-          onClick={() => handleInstructorView(num + 3)}
+          onMouseEnter={() => handleInstructorView(num + 3)}
           className={
             instructorOverview === 3
               ? "bg-purple-500 text-white"
