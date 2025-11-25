@@ -49,14 +49,15 @@ const overviewDetails = [
   },
 ];
 
-const Overview = () => {
+const InstructorOverview = () => {
   const [instructorOverview, setInstructorOverview] = useState(null);
+  const [seeMore, setSeeMore] = useState(false)
   const num = 0;
   const handleInstructorView = (num) => {
     setInstructorOverview(num);
   };
   return (
-    <div className="flex flex-col h-min-screen">
+    <div className="flex flex-col h-min-screen ">
       <Button
         onClick={() => handleInstructorView(num + 1)}
         className={
@@ -67,13 +68,13 @@ const Overview = () => {
       >
         Instructor Overview
       </Button>
-      <div className={instructorOverview !== 1 ? "hidden":"flex flex-wrap gap-6 justify-between px-3 my-4"}>
+      <div className={instructorOverview !== 1 ? "hidden":"flex flex-wrap gap-4 justify-between px-2 my-4"}>
         <OverviewTabs
           key={overviewDetails.id}
           overviewDetails={overviewDetails}
         />
       </div>
-      <div>
+      
         <Button
           onClick={() => handleInstructorView(num + 2)}
           className={
@@ -84,11 +85,18 @@ const Overview = () => {
         >
           Instructor Trainings
         </Button >
-        <div className={instructorOverview !== 2 ? "hidden":"flex flex-wrap gap-6 justify-between px-3 my-4"}>
+        <div className={instructorOverview !== 2 ? "hidden":"mt-3 px-1"}>
+             <div className="flex">
+            <h1 className='text-[13px] font-extrabold'>These are the number of trainings you are moderating</h1>
+            <Button className='text-[10px] font-semibold bg-red-500' onClick={()=>setSeeMore(!seeMore)}>{seeMore ? "see less" : "see more"}</Button>
+           </div>
+        <div className={ seeMore ? "flex flex-wrap gap-2 justify-evenly px-3 my-4 h-[400px] overflow-y-scroll" : "flex flex-wrap gap-2 justify-evenly px-3 my-4 h-[400px] overflow-hidden"}>
+          
           <InstructorTrainings />
         </div>
-      </div>
-      <div>
+        </div>
+      
+      
         <Button
           onClick={() => handleInstructorView(num + 3)}
           className={
@@ -103,9 +111,9 @@ const Overview = () => {
           <UpcomingEvents />
 
         </div>
-      </div>
+    
     </div>
   );
 };
 
-export default Overview;
+export default InstructorOverview;
