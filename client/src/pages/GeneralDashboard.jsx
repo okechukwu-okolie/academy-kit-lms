@@ -12,8 +12,10 @@ const GeneralDashboard = () => {
     useContext(AuthContext);
   return (
     <main className="pl-2">
-      <Header handleCollapseMenu={handleCollapseMenu}/>
-      <Aside  collapseMenu={collapseMenu}/>
+      <div className="flex">
+        <Header handleCollapseMenu={handleCollapseMenu}/>
+        <Aside  collapseMenu={collapseMenu}/>
+      </div>
       <Outlet />
     </main>
   );

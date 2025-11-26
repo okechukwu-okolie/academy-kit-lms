@@ -25,7 +25,7 @@ const Aside = ({collapseMenu}) => {
     
 
   return (
-    <aside className={collapseMenu ? 'hidden' : "w-screen flex flex-col z-5 fixed bg-white"}>
+    <aside className={collapseMenu ? 'hidden' : "w-screen flex flex-col z-5 fixed bg-white pt-5"}>
 
       <div className="flex  gap-2 cursor-pointer mb-9 border-b-2
        border-b-black pb-2 w-80">

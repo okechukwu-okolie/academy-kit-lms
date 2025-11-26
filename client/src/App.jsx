@@ -7,14 +7,14 @@ import { Route, Routes } from 'react-router-dom'
 import PageNotFound from './components/component-pages/PageNotFound'
 import Overview from './components/component-pages/InstructorOverview'
 import UserTrainings from './components/component-pages/UserTrainings'
+import Landing from './pages/LAnding'
 
 const App = () => {
   
   return (
     <Routes>
-      <Route
-        path="/"
-       element={<MainRegister />} />
+      {/* <Route path="/" element={<MainRegister />} /> */}
+      <Route path="/" element={<Landing />} />
 
       <Route path="/general-dashboard" element={<GeneralDashboard />} >
         <Route index element={<Overview/>}/>
