@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch jsonData/quizz.json --port 9000"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.2.6",
@@ -18,6 +19,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "eslint": "^9.39.1",
+    "json-server": "^1.0.0-beta.3",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.553.0",
     "react": "^19.2.0",

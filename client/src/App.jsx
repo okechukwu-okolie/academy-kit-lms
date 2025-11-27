@@ -8,23 +8,27 @@ import PageNotFound from './components/component-pages/PageNotFound'
 import Overview from './components/component-pages/InstructorOverview'
 import UserTrainings from './components/component-pages/UserTrainings'
 import Landing from './pages/LAnding'
+import DateCounter from './dateCounter/DateCounter'
 
 const App = () => {
   
   return (
-    <Routes>
-      {/* <Route path="/" element={<MainRegister />} /> */}
-      <Route path="/" element={<Landing />} />
+  //  <Routes>
+  //     {/* <Route path="/" element={<MainRegister />} /> */}
+  //     <Route path="/" element={<Landing />} />
 
-      <Route path="/general-dashboard" element={<GeneralDashboard />} >
-        <Route index element={<Overview/>}/>
-        <Route path='user-trainings' element={<UserTrainings/>}/>
-      </Route>
-      <Route path="/main-register" element={<MainRegister />} />
-      <Route path="/main-login" element={<MainLogin />} />
-      <Route path="/reset-password" element={<ForgotPassword />} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
+  //     <Route path="/general-dashboard" element={<GeneralDashboard />} >
+  //       <Route index element={<Overview/>}/>
+  //       <Route path='user-trainings' element={<UserTrainings/>}/>
+  //     </Route>
+  //     <Route path="/main-register" element={<MainRegister />} />
+  //     <Route path="/main-login" element={<MainLogin />} />
+  //     <Route path="/reset-password" element={<ForgotPassword />} />
+  //     <Route path="*" element={<PageNotFound />} />
+  //   </Routes>
+  <div>
+    <DateCounter/>
+  </div>
   );
 }
 
