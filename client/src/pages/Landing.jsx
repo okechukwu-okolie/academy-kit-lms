@@ -1,8 +1,9 @@
 import Header from '@/components/component-pages/Header'
 import React, { useContext, useState } from 'react'
-import hero from '../../public/mainloginImage.png'
+import hero from '/mainloginImage.png'
 import Aside from '@/components/Aside'
 import { AuthContext } from '@/context/authContext'
+
 
 const Landing = () => {
     const [range, setRange]=useState(0)
@@ -13,7 +14,7 @@ const Landing = () => {
         console.log(range)
         // let date = new Date().toDateString()
   return (
-    <div>
+    <div >
         <Header handleCollapseMenu={handleCollapseMenu}/>
         <Aside collapseMenu={collapseMenu}/>
       <div>

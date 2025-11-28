@@ -4,6 +4,7 @@ import Question from './Question';
 import { quizQuestions } from '@/jsonData/quizz';
 import QuizGreeting from './QuizGreeting';
 import SingleQuestion from './SingleQuestion';
+import styles from '../dateCounter/Landing.module.css'
 
 
 const initialState ={
@@ -56,6 +57,9 @@ const DateCounter = () => {
           {status === 'ready' && <QuizGreeting numberOfQuestions={numberOfQuestions} dispatch= {dispatch}/>}
           {status === 'active' && <SingleQuestion questions = {questions}/>}
         </Question>
+        <div className={styles.nav}>
+          this is me using the module css
+        </div>
     </div>
   )
 }

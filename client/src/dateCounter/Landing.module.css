@@ -1,0 +1,10 @@
+.nav{
+    font-size: x-large;
+    color: red;
+    flex:auto;
+    width: 100%;
+    text-align: center;
+    background-color: aquamarine;
+    padding: 14px;
+    margin-top: 25px;
+}
